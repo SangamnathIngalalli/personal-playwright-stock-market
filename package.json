@@ -1,0 +1,26 @@
+{
+  "name": "playwright-stock-market",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SangamnathIngalalli/playwright-stock-market.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SangamnathIngalalli/playwright-stock-market/issues"
+  },
+  "homepage": "https://github.com/SangamnathIngalalli/playwright-stock-market#readme",
+  "dependencies": {
+    "@playwright/test": "^1.55.1",
+    "@types/node": "^24.6.2",
+    "playwright": "^1.55.1",
+    "typescript": "^5.9.3"
+  }
+}
