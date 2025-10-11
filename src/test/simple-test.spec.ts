@@ -30,15 +30,14 @@ test('Extract company names, remove duplicates, backup, and prepend new data', a
     'Users',
     'Administrator',
     'OneDrive',
-    'Swing Tadeing',
-    'playwright'
+    'Swing Trading'
   );
   const backupFolderPath = path.join(folderPath, 'backup');
 
   if (!fs.existsSync(folderPath)) fs.mkdirSync(folderPath, { recursive: true });
   if (!fs.existsSync(backupFolderPath)) fs.mkdirSync(backupFolderPath, { recursive: true });
 
-  const filePath = path.join(folderPath, 'company_names.txt');
+  const filePath = path.join(folderPath, 'companies.txt');
 
   // Get current date in DD-MM-YYYY format
   const today = new Date();
