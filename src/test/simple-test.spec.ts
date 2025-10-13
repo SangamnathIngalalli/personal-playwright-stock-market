@@ -46,25 +46,45 @@ test('Extract company names, remove duplicates, backup, and prepend new data', a
   const yyyy = today.getFullYear();
   const formattedDate = `${dd}-${mm}-${yyyy}`;
 
+  // Read existing content and extract existing companies
+  let existingContent = '';
+  const existingCompanies = new Set<string>();
+  
+  if (fs.existsSync(filePath)) {
+    existingContent = fs.readFileSync(filePath, 'utf-8');
+    
+    // Extract all company names from existing content (excluding date headers)
+    const lines = existingContent.split('\n');
+    for (const line of lines) {
+      const trimmedLine = line.trim();
+      if (trimmedLine && !trimmedLine.startsWith('-------')) {
+        existingCompanies.add(trimmedLine);
+      }
+    }
+  }
+
+  // Find new companies (not in existing file)
+  const newCompanies = companyNames.filter(company => !existingCompanies.has(company));
+  
+  if (newCompanies.length > 0) {
+    console.log(`✨ NEW COMPANIES (${newCompanies.length}):`, newCompanies);
+  } else {
+    console.log('ℹ️ No new companies found today.');
+  }
+
   // Backup existing file if it exists
   if (fs.existsSync(filePath)) {
     const backupFilePath = path.join(backupFolderPath, `company_names_backup_${formattedDate}.txt`);
     fs.copyFileSync(filePath, backupFilePath);
     console.log(`📦 Backup created: ${backupFilePath}`);
-  }
-
-  // Read existing content
-  let existingContent = '';
-  if (fs.existsSync(filePath)) {
-    existingContent = fs.readFileSync(filePath, 'utf-8');
 
     // Remove any previously existing companies that are in today's list
     for (const company of companyNames) {
-      const regex = new RegExp(`^${company}$`, 'gm'); // matches line with exact company name
+      const regex = new RegExp(`^${company}$`, 'gm');
       existingContent = existingContent.replace(regex, '');
     }
 
-    // Also remove any leftover blank lines caused by removal
+    // Remove any leftover blank lines caused by removal
     existingContent = existingContent.replace(/\n{2,}/g, '\n\n').trim();
   }
 
