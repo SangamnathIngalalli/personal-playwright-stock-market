@@ -19,10 +19,13 @@
   "homepage": "https://github.com/SangamnathIngalalli/playwright-stock-market#readme",
   "dependencies": {
     "@types/node": "^24.6.2",
+    "csv-parser": "^3.2.0",
     "playwright": "^1.55.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "@playwright/test": "^1.55.1"
+    "@playwright/test": "^1.55.1",
+    "@types/xlsx": "^0.0.35"
   }
 }
