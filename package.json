@@ -4,7 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:scrap": "npx playwright test scrap-52weeks-high-stock.spec.ts",
+    "test:track": "npx playwright test 52weeks-track-stocks.spec.ts",
+    "test:update": "npx playwright test update-prices-track-stocks.spec.ts",
+    "test:all": "npm run test:scrap && npm run test:track && npm run test:update",
+    "test:sequential": "npx playwright test --grep \"Extract company names|Track 52-week high stocks|Update tracking file\"",
+    "test:full-pipeline": "npm run test:scrap && npm run test:track && npm run test:update",
+    "test:pipeline": "npx ts-node src/test/run-sequential-tests.ts"
   },
   "repository": {
     "type": "git",
@@ -26,6 +33,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.55.1",
-    "@types/xlsx": "^0.0.35"
+    "@types/xlsx": "^0.0.35",
+    "ts-node": "^10.9.1"
   }
 }
