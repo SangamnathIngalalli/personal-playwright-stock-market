@@ -47,5 +47,6 @@ export interface StockMappings {
     'Grasim Inds.': 'GRASIM INDUSTRIES LTD',
     'TVS Motor': 'TVS MOTOR COMPANY  LTD',
     'SCI': 'SHIPPING CORP OF INDIA LT',
+    'Chola Inv Finance': 'CHOLAMANDALAM IN & FIN CO',
     // Add more mappings as needed
   };

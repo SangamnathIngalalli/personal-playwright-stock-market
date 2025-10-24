@@ -90,7 +90,7 @@ function findBestMatch(stockName: string, availableSecurities: string[]): string
   return null;
 }
 
-test('Update tracking file with today\'s prices from today_price.csv', async ({ page }) => {
+test.only('Update tracking file with today\'s prices from today_price.csv', async ({ page }) => {
   console.log('🚀 Starting stock price update process...');
   console.log('📅 Current Date:', new Date().toLocaleString());
   
